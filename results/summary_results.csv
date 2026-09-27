@@ -1,5 +1,5 @@
-mechanism,ai,genuine_fan_allocation_rate,scalper_allocation_rate,social_welfare,scalper_profit
-FCFS,AI,0.6388400000000001,0.36116000000000004,11877.012768565633,2817.048
-FCFS,No AI,0.758,0.242,13118.795104282117,1573.0
-Randomized Queue,AI,0.7977000000000001,0.2023,14880.353641737724,1577.94
-Randomized Queue,No AI,0.80004,0.19996,13921.41585112346,1299.74
+mechanism,ai,primary_fan_allocation_rate,final_fan_ownership_rate,fan_consumer_surplus,scalper_profit,rent_dissipation,social_surplus,mean_fan_effort,mean_scalper_effort,active_fans,active_scalpers,average_scalper_identities
+Effort Contest,AI,0.0,1.0,79.31520895213353,1.6000000000012307,78.39999999999877,180.91520895213475,0.0,1.5679999999999754,0.0,50.0,
+Effort Contest,No AI,1.0,1.0,9.651336226535859,0.0,145.07847945235227,109.65133622653586,0.07253923972617614,0.0,21.3426,0.0,
+Verified Lottery,AI,0.498,1.0,84.43265214331377,25.16,15.000000000000004,209.59265214331379,,,,,4.0
+Verified Lottery,No AI,0.806,1.0,88.02357613557383,15.52,0.0,203.54357613557383,,,,,1.0
