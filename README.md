@@ -1,204 +1,204 @@
-# AI, Rent-Seeking, and Ticket Allocation
+# AI, Rent-Seeking, and Ticket Allocation:
+## Mechanism Design under Asymmetric Participation Costs
 
-COMSCI/ECON 206 Problem Set 2
+**COMSCI/ECON 206 — PS2**  
+**Team FP6 — Longfei Jing, Tian Liang, Jiayang Sun**
 
-## Project Overview
+---
 
-This project studies how AI-assisted ticket-buying technology changes strategic competition for limited concert tickets.
+## 1. Research Question
 
-The key idea is not simply that AI makes ticket buying easier. Instead, AI may reduce participation costs asymmetrically across different types of buyers. Genuine fans may benefit from convenience, while professional scalpers can use bots, automation, and multiple accounts at scale.
+How does AI's asymmetric reduction of ticket-buying costs change strategic competition and welfare, and which ticket-allocation mechanism is more robust to this change?
 
-We study how this asymmetric reduction in participation cost changes effort, primary allocation, resale, consumer welfare, and rent dissipation.
+Our central idea is that AI does not necessarily reduce participation costs equally for all users.
 
-## Shared Research Question
+For a genuine fan, AI may make ticket purchasing somewhat easier. For a professional scalper, automation may support repeated attempts, faster strategic action, or multiple identities at much larger scale.
 
-How does AI's asymmetric reduction of ticket-buying costs change strategic competition, resale, and welfare in limited ticket markets, and which allocation mechanism is more robust to this change?
+We therefore model AI as an **asymmetric participation-cost shock**, rather than as a decision maker or perfect anti-scalping detector.
 
-## Participants
+We compare two mechanisms:
 
-We model two types of buyers.
+1. **Effort Contest**
+2. **Verified Lottery**
 
-### Genuine Fans
+The project combines game theory, social choice, mechanism design, computational simulation, and exploratory behavioral reflection.
 
-Genuine fans value attending the concert.
+---
 
-Each fan has a private value:
+## 2. Three-Lens Framework
 
-v_i ~ Uniform[a, b]
+### Game Theory
 
-A fan who obtains a ticket directly receives utility based on the difference between the attendance value and the official ticket price.
+The strategic actors are:
 
-### Scalpers
+- genuine fans;
+- professional scalpers;
+- the ticketing platform as mechanism designer.
 
-Scalpers primarily value tickets for resale.
+Under the Effort Contest, participants choose costly strategic effort.
 
-Their private economic value comes from the expected resale margin:
+For participant \(i\),
 
-resale price - official ticket price.
+\[
+u_i
+=
+V_i
+\frac{e_i}{\sum_j e_j}
+-
+c_i e_i,
+\]
 
-Scalpers may benefit more strongly from AI because automation can support repeated attempts, bot usage, and multiple-account strategies.
+where:
 
-## Role of AI
+- \(V_i\) is the participant's value of winning;
+- \(e_i\) is strategic effort;
+- \(c_i\) is the marginal cost of effort.
 
-AI is modeled as an asymmetric reduction in participation cost.
+The probability of winning is proportional to effort.
 
-Without AI:
+We use an exact heterogeneous complete-information Nash equilibrium as a computational benchmark after values are realized.
 
-- fan effort cost = 10
-- scalper effort cost = 10
+---
 
-With AI:
+### Social Choice
 
-- fan effort cost = 5
-- scalper effort cost = 1
+The main stakeholders are:
 
-The central mechanism is therefore:
+- genuine fans;
+- scalpers;
+- ticketing platforms;
+- performers;
+- regulators.
 
-AI assistance
-→ asymmetric cost reduction
-→ different optimal effort
-→ changed primary allocation
-→ changed resale and welfare outcomes
+We do not define fairness using only one metric.
 
-## Strategic Model
+We separately evaluate:
 
-The platform first commits to an allocation mechanism.
+- primary fan allocation;
+- final fan ownership;
+- fan consumer surplus;
+- scalper profit;
+- rent dissipation;
+- social surplus.
 
-Buyers then observe their private type, value, and participation cost and simultaneously choose their strategic action.
+This distinction matters because a mechanism can perform poorly for **primary access** while still producing high **final fan ownership** after resale.
 
-The full environment is therefore modeled as a two-stage Bayesian game.
+Therefore:
 
-For the classical benchmark, we use a Tullock-style contest. With one prize, n symmetric players, prize value V, and linear effort cost c × e, the symmetric equilibrium effort is:
+> fairness, final ownership, and welfare are not identical objectives.
 
-e* = V(n - 1) / (c n^2)
+---
 
-This benchmark shows why the effect of AI depends on whether cost reductions are symmetric or asymmetric.
+### Mechanism Design
 
-## Mechanism A: Effort Contest
+We compare two allocation rules.
 
-Ticket competition is represented as an all-pay or rent-seeking contest.
+#### Mechanism 1: Effort Contest
 
-Participants choose costly effort or attempts.
+Participants invest costly effort.
 
-Higher effort increases the probability of receiving a ticket, but every participant pays the effort cost whether or not they win.
+Winning probability is:
 
-This mechanism approximates speed-based online ticket competition in which repeated refreshing, automation, and computational effort may improve success.
+\[
+p_i
+=
+\frac{e_i}{\sum_j e_j}.
+\]
 
-## Mechanism B: Verified Lottery
+AI is modeled as a reduction in marginal effort cost.
 
-Each verified identity receives one entry into a randomized ticket lottery.
+Main conditions:
 
-Additional identities are possible only by paying an identity-creation cost k.
+- No AI:  
+  \[
+  (c_F,c_S)=(10,10)
+  \]
 
-This mechanism removes the direct advantage of speed but may remain vulnerable if AI reduces the cost of creating or managing additional identities.
+- AI stress test:  
+  \[
+  (c_F,c_S)=(5,1)
+  \]
 
-## Experimental Conditions
+The AI treatment is intentionally used as a **stress test**. It is not an empirical estimate of real-world AI cost reductions.
 
-We compare both mechanisms under two environments.
+---
 
-### No AI
+#### Mechanism 2: Verified Lottery
 
-Fan effort cost = 10
+Each genuine fan receives one verified entry.
 
-Scalper effort cost = 10
+Scalpers may attempt to obtain additional identities.
 
-### AI
+A scalper choosing \(q\) identities has winning probability:
 
-Fan effort cost = 5
+\[
+p_S(q)
+=
+\frac{q}
+{N_F + N_S q}.
+\]
 
-Scalper effort cost = 1
+Extra identities carry a cost.
 
-For the verified lottery, we additionally vary the cost of obtaining additional identities.
+Main conditions:
 
-## Main Metrics
+- No AI identity cost:
+  \[
+  k=0.25
+  \]
 
-### Primary Fan Allocation Rate
+- AI stress-test identity cost:
+  \[
+  k=0.10
+  \]
 
-The proportion of tickets initially allocated directly to genuine fans.
+The Verified Lottery removes the direct return to speed, but it can still become vulnerable when duplicate identities become sufficiently cheap.
 
-### Final Fan Ownership Rate
+---
 
-The proportion of tickets ultimately held by genuine fans after secondary-market resale.
+## 3. Market Environment
 
-### Fan Consumer Surplus
+Each simulation represents one representative scarce concert ticket.
 
-The total difference between genuine fans' attendance values and the prices they actually pay.
+### Participants
 
-### Scalper Profit
+- 200 genuine fans
+- 50 professional scalpers
 
-Scalper resale revenue minus official ticket payments and strategic participation costs.
+### Ticket market
 
-### Rent Dissipation
+- Official ticket price: 100
+- Resale price: 180
+- Scalper resale-margin value: 80
 
-The real resources spent competing for a fixed number of tickets, including effort and identity-creation costs.
+### Genuine-fan values
 
-## Computational Method
+Fan attendance values are drawn from:
 
-We use Python in Google Colab.
+\[
+V_F \sim U[120,260].
+\]
 
-Main libraries:
+### Resale
+
+If a scalper wins the primary allocation, resale occurs when the highest-value remaining fan values attendance at least as much as the resale price.
+
+This allows us to distinguish:
+
+- **primary fan allocation**, and
+- **final fan ownership**.
+
+---
+
+## 4. Computational Method
+
+The simulation is implemented in Python using:
 
 - NumPy
 - pandas
 - Matplotlib
 
-The main simulation uses numerical best-response approximations for strategic effort or account creation and repeated Monte Carlo allocation.
+Random seed:
 
-No GPU is required.
-
-## Computational Comparison
-
-The main comparison is:
-
-Effort Contest / No AI
-→ Effort Contest / AI
-
-and
-
-Verified Lottery / No AI
-→ Verified Lottery / AI.
-
-We test whether AI-driven asymmetric cost reduction increases scalper participation and whether the verified lottery reduces rent-seeking and protects consumer welfare.
-
-## Resale
-
-Primary allocation and final ownership are reported separately.
-
-Scalpers who obtain tickets may resell them to losing fans whose values are high enough to pay the resale price.
-
-Ticket prices and resale payments are treated as transfers when calculating social surplus, while effort and identity costs are treated as real resource costs.
-
-## Evidence Boundary
-
-All computational results use synthetic agents and stipulated parameters.
-
-The simulation demonstrates how the stated model behaves under its assumptions. It does not estimate the causal effect of AI in real ticket markets.
-
-Behavioral evidence from classroom or peer interaction is treated as exploratory evidence only.
-
-## Reproducibility
-
-The main notebook is:
-
-`auction_simulation.ipynb`
-
-The repository contains:
-
-- model definitions;
-- parameter settings;
-- numerical best-response procedures;
-- fixed random seeds;
-- simulation outputs;
-- figures;
-- reproducibility instructions.
-
-## Team
-
-- Jiayang Sun
-- Tian Liang
-- Longfei Jing
-
-## Course
-
-COMSCI/ECON 206 — Computational Microeconomics  
-Fall 2026
+```text
+2026
