@@ -1,0 +1,4 @@
+prize_value,n_players,marginal_cost,equilibrium_effort
+80.0,10,10.0,0.72
+80.0,10,5.0,1.44
+80.0,10,1.0,7.2

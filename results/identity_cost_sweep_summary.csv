@@ -1,8 +1,9 @@
-fake_id_cost,primary_fan_allocation_rate,average_scalper_identities
-0.5,0.808,1.0
-0.3,0.79,1.0
-0.25,0.81,1.0
-0.2,0.686,2.0
-0.15,0.574,3.0
-0.1,0.52,4.0
-0.05,0.362,7.0
+identity_cost,optimal_scalper_identities,expected_profit_per_scalper,primary_fan_allocation,final_fan_ownership,social_surplus,rent_dissipation,access_classification
+0.5,1,0.32,0.802,1.0,206.3658907412178,0.0,Robust
+0.4,1,0.32,0.794,1.0,203.33073218777173,0.0,Robust
+0.3,1,0.32,0.79,1.0,203.54348731244406,0.0,Robust
+0.25,1,0.32,0.786,1.0,202.96362229879276,0.0,Robust
+0.2,2,0.3333333333333333,0.674,1.0,203.34112904108468,10.0,Moderately vulnerable
+0.15,3,0.38571428571428573,0.582,1.0,205.27598081634176,15.0,Moderately vulnerable
+0.1,4,0.5,0.494,1.0,210.6405605810486,15.0,Highly vulnerable
+0.05,7,0.7181818181818183,0.37,1.0,217.30507664743305,15.0,Highly vulnerable
