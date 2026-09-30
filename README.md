@@ -109,12 +109,12 @@ AI is modeled as a reduction in marginal effort cost.
 
 Main conditions:
 
-- No AI:  
+- No AI:
   \[
   (c_F,c_S)=(10,10)
   \]
 
-- AI stress test:  
+- AI stress test:
   \[
   (c_F,c_S)=(5,1)
   \]
